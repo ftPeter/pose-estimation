@@ -41,7 +41,8 @@ while(True):
     # frame = aruco.drawDetectedMarkers(frame, corners)
 
     if( ids is not None ):
-        rvecs,tvecs, objpoints = aruco.estimatePoseSingleMarkers( corners, aruco_marker_length_meters, 
+        #rvecs,tvecs, objpoints = aruco.estimatePoseSingleMarkers( corners, aruco_marker_length_meters, 
+        rvecs,tvecs = aruco.estimatePoseSingleMarkers( corners, aruco_marker_length_meters, 
                 camera_matrix, dist_coeffs )
         for i in range(len(rvecs)):
             frame = aruco.drawAxis( frame, camera_matrix, dist_coeffs, rvecs[i], tvecs[i], aruco_marker_length_meters )
