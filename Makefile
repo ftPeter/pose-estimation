@@ -7,8 +7,11 @@ generate-board:
 calibrate:
 	opencv_interactive-calibration -h=7 -w=5 --sz=.032 --t=charuco
 
-pose-board:
+pose-charuco:
 	python3 charuco_pose.py
+
+pose-aruco-board:
+	python3 aruco_board_pose.py
 
 pose-aruco:
 	python3 aruco_pose.py
