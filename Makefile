@@ -11,8 +11,8 @@ pose-charuco:
 	python3 charuco_pose.py
 
 pose-aruco-board:
-	python3 aruco_board_pose.py
+	python3 aruco-calibration/aruco_board_pose.py
 
 pose-aruco:
-	python3 aruco_pose.py
+	python3 aruco-calibration/aruco_pose.py
 
