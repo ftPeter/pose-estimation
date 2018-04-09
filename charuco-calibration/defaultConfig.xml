@@ -10,5 +10,5 @@
 	<solver_max_iters>30</solver_max_iters>
 	<fast_solver>0</fast_solver>
 	<frame_filter_conv_param>0.1</frame_filter_conv_param>
-	<camera_resolution>800 600</camera_resolution>
+	<camera_resolution>1920 1080</camera_resolution>
 </opencv_storage>
