@@ -61,6 +61,8 @@ class Ranger:
                       [-0.050,0.003, -0.002], [-0.027, 0.003, -0.042]], dtype=np.float32),
             np.array([[-0.049, 0.048, 0.002], [-0.027, 0.048, 0.042],
                       [-0.028, 0.003, 0.042], [-0.049, 0.003, 0.002]], dtype=np.float32)]
+
+
         # PORT TAG BOARD
         self.port_board_ids = np.array(
             [[21], [22], [23], [24], [25], [26]], dtype=np.int32)
@@ -76,6 +78,27 @@ class Ranger:
                                                aruco.DICT_6X6_250),
                                              self.star_board_ids)
         self.board_list = [self.port_board, self.star_board]
+
+        self.demo_cube_ids = np.array(
+            [[0], [1], [2], [3], [4], [5]], dtype=np.int32)
+        self.demo_cube_corners = [
+            np.array([[0.05, 0.05, 0.06], [0.05, -0.05, 0.06],
+                      [-0.05, -0.05, 0.06], [-0.05, 0.05, 0.06]], dtype=np.float32),
+            np.array([[-0.06, -0.05, -0.05], [-0.06, 0.05, -0.05],
+                      [-0.06, 0.05, 0.05], [-0.06, -0.05, 0.05]], dtype=np.float32),
+            np.array([[0.05, -0.05, -0.06], [0.05, 0.05, -0.06],
+                      [-0.05, 0.05, -0.06], [-0.05, -0.05, -0.06]], dtype=np.float32),
+            np.array([[0.05, 0.06, -0.05], [0.05, 0.06, 0.05],
+                      [-0.05, 0.06, 0.05], [-0.05, 0.06, -0.05]], dtype=np.float32),
+            np.array([[0.05, -0.06, 0.05], [0.05, -0.06, -0.05],
+                      [-0.05, -0.06, -0.05], [-0.05, -0.06, 0.05]], dtype=np.float32),
+            np.array([[0.06, -0.05, -0.05], [0.06, -0.05, 0.05],
+                      [0.06, 0.05, 0.05], [0.06, 0.05, -0.05]], dtype=np.float32)       ]
+        self.demo_cube_board = aruco.Board_create(self.demo_cube_corners,
+                                                  aruco.getPredefinedDictionary(
+                                                 aruco.DICT_6X6_250),
+                                                  self.demo_cube_ids)
+        self.board_list.append(self.demo_cube_board)
 
     def get_board_list(self):
         return self.board_list
@@ -147,6 +170,8 @@ class Ranger:
             return self.get_board_range( self.star_board )
         elif(board_name_str is "port_board"):
             return self.get_board_range( self.port_board )
+        elif (board_name_str is "demo_cube_board"):
+            return self.get_board_range(self.demo_cube_board)
         # board unknown
         return None
 
@@ -201,6 +226,9 @@ if __name__ == '__main__':
         portboard_range = ranger.get_boardname_range("port_board")
         print("starboard board range = ", starboard_range)
         print("portboard board range = ", portboard_range)
+
+        portboard_range = ranger.get_boardname_range("demo_cube_board")
+        print("demo_cube board range = ", starboard_range)
 
         frame = ranger.get_frame()
 
